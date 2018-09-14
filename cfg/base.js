@@ -15,6 +15,8 @@ module.exports = {
   debug: true,
   devtool: 'eval',
   output: {
+
+    //  __dirname指当前项目目录
     path: path.join(__dirname, '/../dist/assets'),
     filename: 'app.js',
     publicPath: defaultSettings.publicPath
@@ -22,13 +24,22 @@ module.exports = {
   devServer: {
     contentBase: './src/',
     historyApiFallback: true,
+
+    //  启用热更新
     hot: true,
     port: defaultSettings.port,
     publicPath: defaultSettings.publicPath,
     noInfo: false
   },
+
+  //  模块解析配置项
   resolve: {
+
+    //  自动匹配后缀，数组中第一个元素''用于使用全称时的匹配，如果没有这一项，会无法匹配全称
+    //  比如require(a.js)，那么会匹配a.js.js和a.js.jsx，而不会匹配a.js
     extensions: ['', '.js', '.jsx'],
+
+    //  设置别名，在require中可以使用别名
     alias: {
       actions: `${defaultSettings.srcPath}/actions/`,
       components: `${defaultSettings.srcPath}/components/`,

@@ -11,9 +11,13 @@ let BowerWebpackPlugin = require('bower-webpack-plugin');
 let config = Object.assign({}, baseConfig, {
   entry: [
     'webpack-dev-server/client?http://127.0.0.1:' + defaultSettings.port,
+
+    //  热更新相关
     'webpack/hot/only-dev-server',
     './src/index'
   ],
+
+  //  开启webpack增量编译
   cache: true,
   devtool: 'eval-source-map',
   plugins: [
@@ -29,6 +33,9 @@ let config = Object.assign({}, baseConfig, {
 // Add needed loaders to the defaults here
 config.module.loaders.push({
   test: /\.(js|jsx)$/,
+
+  //  react-hot：react实时编译和更新
+  //  ！表示先执行babel-loader再执行react-hot
   loader: 'react-hot!babel-loader',
   include: [].concat(
     config.additionalPaths,
