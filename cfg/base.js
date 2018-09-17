@@ -37,7 +37,7 @@ module.exports = {
 
     //  自动匹配后缀，数组中第一个元素''用于使用全称时的匹配，如果没有这一项，会无法匹配全称
     //  比如require(a.js)，那么会匹配a.js.js和a.js.jsx，而不会匹配a.js
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.json'],
 
     //  设置别名，在require中可以使用别名
     alias: {

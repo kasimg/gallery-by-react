@@ -3,16 +3,28 @@ require('styles/App.scss');
 
 import React from 'react';
 
-const yeomanImage = require('../images/yeoman.png');
+//  获取图片信息，使用自执行函数
+const imageData = (() => {
+  let data = require('../data/imageData');
+  data.forEach((ele) => {
+    ele.imageURL = require('../images/' + ele.fileName);
+  });
+  return data;
+})();
 
 class AppComponent extends React.Component {
+
   render() {
+
     return (
-      <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <span>aaa</span>
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
-      </div>
+     <section className="stage">
+       <figure className="stage__images">
+
+       </figure>
+       <nav className="stage__nav">
+
+       </nav>
+     </section>
     );
   }
 }
